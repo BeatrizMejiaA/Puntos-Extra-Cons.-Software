@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  <title>Cálculo cantidad pintura a utilizar</title>
+  </head>
+  <body style="background-color:rgba(184,164,160,0.5);">
+    <script type="text/javascript">
+        function cantidad_pintura() {
+          var ancho_pared = 0;
+          var altura_pared = 0;
+          var ancho_ventana = 0;
+          var altura_ventana = 0;
+          var ancho_puerta = 0;
+          var altura_puerta = 0;
+          var cantidad_total_necesaria = 0;
+          var area_pintar = 0;
+
+          ancho_pared = parseFloat(document.getElementById('a_pared').value);
+          altura_pared = parseFloat(document.getElementById('al_pared').value);
+          ancho_ventana = parseFloat(document.getElementById('a_ventana').value);
+          altura_ventana = parseFloat(document.getElementById('al_ventana').value);
+          ancho_puerta = parseFloat(document.getElementById('a_puerta').value);
+          altura_puerta = parseFloat(document.getElementById('al_puerta').value);
+
+          opcion = parseInt(document.getElementById('tipo').value);
+          area_pintar = Math.round((ancho_pared * altura_pared) - ((ancho_ventana*altura_ventana) + (ancho_puerta * altura_puerta)));
+
+          if (opcion == 1) {
+              cantidad_total_necesaria = Math.round(area_pintar / 13);
+          }else if (opcion == 2) {
+              cantidad_total_necesaria = Math.round(area_pintar / 10);
+          }else if (opcion == 3) {
+              cantidad_total_necesaria = Math.round(area_pintar / 12);
+          }
+          alert("El area total a pintar es:" + " " + area_pintar + "m2 (metros cuadrados) \n" + "Cantidad de pintura a utilizar es: " + cantidad_total_necesaria + "litros." )
+}
+
+  </script>
+  </body>
+  <h1> Cálculo cantidad pintura a utilizar <h1>
+  <h2>Dimensiones de pared</h2>
+  <input type="text" id="a_pared" placeholder="Ingrese el ancho de la pared">
+  <input type="text" id="al_pared" placeholder="Ingrese la altura de la pared">
+  <h2>Dimensiones de ventana</h2>
+  <input type="text" id="a_ventana" placeholder="Ingrese el ancho de la ventana">
+  <input type="text" id="al_ventana" placeholder="Ingrese la altura de la ventana">
+  <h2>Dimensiones de puerta</h2>
+  <input type="text" id="a_puerta" placeholder="Ingrese el ancho de la puerta">
+  <input type="text" id="al_puerta" placeholder="Ingrese la altura de la puerta">
+  <h3>Ingrese una opcion de tipo de pintura: <br> 1.Aceite <br> 2.Agua <br> 3.Oleo</h3>
+  <input type="text" id="tipo" placeholder="Ingrese tipo de pintura">
+  <input type="button" value="Calcular" onclick="cantidad_pintura()">
+
+
+  </html>

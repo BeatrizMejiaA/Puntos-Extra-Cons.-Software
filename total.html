@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style media="screen">
+      body {
+        background-color:rgba(184,164,160,0.5);
+      }
+      .button {
+        background: #000000;
+        color: #ffffff;
+      }
+      .caja{
+        width: 250px;
+        height: 30px;
+
+      }
+    </style>
+
+  <title>Total</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+        function total() {
+            var cantidad_litros = 0;
+            var opcion = 0;
+            var total_pago = 0;
+            var total1 =0;
+            var total2 = 0;
+            var total3 =0;
+            var total4 = 0;
+            var aceite = [];
+                aceite[0] = 240.50;
+                aceite[1] = 432.35;
+                aceite[2] = 1821.65;
+            var agua = [];
+                agua[0] = 150;
+                agua[1] = 250;
+                agua[2] = 999;
+            var oleo = [];
+                oleo[0] = 386.85;
+                oleo[1] = 663.25;
+                oleo[2] = 3103.55;
+
+            cantidad_litros = parseFloat(document.getElementById('cantidadlitros').value);
+            opcion = parseInt(document.getElementById('opcion').value);
+            presentacion = parseInt(document.getElementById('presentacion').value);
+
+            if (opcion == 1 && presentacion == 1) {
+                if (cantidad_litros < 1.89 && presentacion == 1) {
+                    total_pago = aceite[0];
+                    alert("Total a pagar:" + " " +total_pago + " " + " por medio galon");
+                }else {
+                  alert("Cantidad invalida, revise los datos");
+                }
+              }
+            if (opcion == 2 && presentacion == 2) {
+                total1 = parseInt(cantidad_litros / 3.785)
+                total2 = total1 * agua[1];
+                total3 = (cantidad_litros % 3.785);
+                total4 = agua[0];
+                total_pago = total2 + total4;
+
+                alert("El total a pagar es:\n" + " "+ total1 + " galones" + " "+ total2 + " " + "medio galon" + " "+ total4 +"\n" + "siendo un total de:" + " " +total_pago);
+            }
+            if (opcion == 3 && presentacion == 3) {
+                total1 = parseInt(cantidad_litros / 18.925)
+                total2 = total1 * oleo[2];
+                total3 = (cantidad_litros % 3.785);
+                total4 = agua[0];
+                total_pago = total2 + total4;
+
+                alert("El total a pagar es:\n" + " "+ total1 + " cubetas" + " "+ total2 + " " + "medio galon" + " "+ total4 +"\n" + "siendo un total de:" + " " +total_pago);
+            }
+
+        }
+    </script>
+    </body>
+    <h1>Total a pagar<h1>
+    <h2>Cantidad de litros de pintura a comprar</h2>
+    <input class="caja"type="text" id="cantidadlitros" placeholder="Ingrese cantidad de litros a comprar:">
+    <h2>Ingrese una opcion de tipo de pintura: <br> 1).Aceite <br> 2).Agua <br> 3).Oleo</h2>
+    <input class="caja"type="text" id="opcion" placeholder="Ingrese opcion:">
+    <h2>Ingrese tipo de presentacion: <br> 1).Medio galon <br> 2).Galon <br> 3).Cubeta</h2>
+    <input class="caja"type="text" id="presentacion" placeholder="Ingrese opcion:">
+    <input class="button" type="button" value="Resultado" onclick="total()">
+
+
+</html>
